@@ -99,6 +99,9 @@ ion-label{
   font-size: 1.4em;
 }
 
+ion-item{
+  --ion-item-background: #FF865E;
+}
 
 
 ion-button.secondary{
