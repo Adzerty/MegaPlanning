@@ -15,6 +15,48 @@
     margin-top: 20vh;
     transform: translateY(-50%);
   }
+
+  .eventNow {  
+    background-color: #FF865E;
+    border-radius: 12px;
+  
+    width:fit-content;
+    max-width: 90%;
+  
+    text-align: center;
+    margin-top: 10vh;
+    margin-bottom: 15px;
+  }
+
+  .eventLaterContainer {
+
+    background-color: #1A936F;
+    border-radius: 12px;
+  
+    width:fit-content;
+    max-width: 90%;
+  
+    text-align: center;
+
+    padding: 5px;
+  }
+
+  .eventLater{
+    background-color: #114B5F;
+    border-radius: 12px;
+    margin: 5px;
+    padding: 5px;
+  
+    width:fit-content;
+
+  }
+
+  .label_event_now{
+    font-size: 16px;
+    font-weight: 1000;
+    color: black;
+    padding:10px
+  }
   
   .container strong {
     font-size: 20px;
