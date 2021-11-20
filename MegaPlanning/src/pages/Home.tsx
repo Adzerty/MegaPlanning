@@ -259,8 +259,11 @@ END:VCALENDAR`;
   let parsedCal = ical.parseString(stringTmpCal);
   let eventNow = parsedCal.events.filter(eventIsNow);
   let eventsAfter = parsedCal.events.filter(eventIsLater).slice(0,3);
-  console.log(parsedCal.calendarData);
+  //console.log(parsedCal.calendarData);
+  console.log("EVENT NOW");
   console.log(eventNow);
+
+  console.log("EVENT LATER");
   console.log(eventsAfter);
 
   return (
@@ -271,6 +274,8 @@ END:VCALENDAR`;
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
+
+        {localStorage.getItem("calendarLink") === null &&
           <IonGrid className="container">
             <IonRow>
               <IonLabel className="label_ftc"> Lien </IonLabel>
@@ -285,11 +290,13 @@ END:VCALENDAR`;
                 if(link !== "null")
                 {
                   localStorage.setItem("calendarLink", link);
+                  window.location.reload();
                 }
               }}>Charger le calendrier</IonButton>
               <IonButton className="secondary">Tutoriel</IonButton>
             </IonRow>
           </IonGrid> 
+        }
       </IonContent>
     </IonPage>
   );
