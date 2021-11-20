@@ -1,0 +1,38 @@
+.container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  
+    background-color: #FF865E;
+    border-radius: 12px;
+  
+    width:fit-content;
+  
+    text-align: center;
+    margin-top: 20vh;
+    transform: translateY(-50%);
+  }
+  
+  .container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  .container p {
+    font-size: 16px;
+    line-height: 22px;
+    color: #8c8c8c;
+    margin: 0;
+  }
+  
+  .container a {
+    text-decoration: none;
+  }
+  
+  .label_ftc{
+    padding: 10px;
+  }
+  
