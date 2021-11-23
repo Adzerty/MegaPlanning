@@ -21,16 +21,26 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import React from 'react';
+import Menu from './components/Menu';
+import MenuCrous from './pages/MenuCrous';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
+      <Menu/>
+      <IonRouterOutlet id="mainContent">
+        
+        <Route exact path="/">
+          <Redirect to="/home"/>
+        </Route>
+
+        <Route exact path="/menu">
+          <MenuCrous />
+        </Route>
+
         <Route exact path="/home">
           <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

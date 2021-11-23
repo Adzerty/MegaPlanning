@@ -1,6 +1,6 @@
-import { IonButton, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
 
 
@@ -41,31 +41,32 @@ function eventIsLater(o:any)
   return dateStart >= dateNow && dateEnd >= dateNow;
 }
 
+
+
 const Home: React.FC = () => {
 
   const ical = require('cal-parser');
-
-  let stringTmpCal;
-
-  useEffect(()=>{}, [stringTmpCal]);
-
+  const [stringTmpCal, setCal] = useState<string>('');
   let link = "https://hplanning.univ-lehavre.fr/Telechargements/ical/Edt_ST_L3___INFORMATIQUE.ics?version=2018.0.3.6&idICal=AA3AF4DB9A4DFF66928DD079A80BF99B&param=643d5b312e2e36325d2666683d3126663d3131313030";
-  // Example of a GET request
-    const doGet = async () => {
-      const options = {
-        url: link,
-        headers: { 'X-Fake-Header': 'Max was here' },
-        params: { size: 'XL' },
+  
+
+  useEffect(()=>{
+      
+      // Example of a GET request
+      const doGet = async () => {
+
+        const options = {
+          url: link
+        };
+
+        const response: HttpResponse = await Http.get(options);
+
+        setCal(response.data);
+
       };
 
-      const response: HttpResponse = await Http.get(options);
-
-      stringTmpCal = response.data;
-    };
-
-    doGet();
-    
-
+      doGet();
+  }, []);
 
   
   let parsedCal = ical.parseString(stringTmpCal);
@@ -88,7 +89,10 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Mega Planning</IonTitle>
+          <IonButtons slot="start">
+            <IonMenuButton/>
+          </IonButtons>
+          <IonTitle>MegaPlanning</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
