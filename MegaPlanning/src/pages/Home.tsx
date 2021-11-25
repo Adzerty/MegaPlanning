@@ -12,6 +12,7 @@ function sortByDtstart(o:any, o2:any){
 
 function eventIsNow(o:any)
 {
+  console.log("AAHAHAHA" + o.dtstart)
   let dateNow = Date.now();
   let dateStart = Date.parse(o.dtstart.value.toString());
   let dateEnd = Date.parse(o.dtend.value.toString());
@@ -71,15 +72,17 @@ const Home: React.FC = () => {
 
   
   let parsedCal = ical.parseString(stringTmpCal);
+  // console.log("CALENDRIER");
+  // console.log(parsedCal)
   let eventNow = parsedCal.events.sort(sortByDtstart).filter(eventIsNow).filter(eventIsInGroupe);
   console.log(eventNow);
   let eventsAfter = parsedCal.events.sort(sortByDtstart).filter(eventIsLater).filter(eventIsInGroupe).slice(0,10);
   //console.log(parsedCal.calendarData);
-  console.log("EVENT NOW");
-  console.log(eventNow);
+  // console.log("EVENT NOW");
+  // console.log(eventNow);
 
-  console.log("EVENT LATER");
-  console.log(eventsAfter);
+  // console.log("EVENT LATER");
+  // console.log(eventsAfter);
 
 
   //hooks useState pour les radios
@@ -204,6 +207,35 @@ const Home: React.FC = () => {
                 <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString().slice(0,24)} </IonLabel>
               </IonRow>
             </IonRow>
+          </IonGrid> 
+        }
+
+        {localStorage.getItem("gpTP") !== null && eventNow.length >= 2 &&
+
+                
+          <IonGrid className="eventNowContainer">
+            <IonRow>
+              <IonLabel>
+                Cours actuel
+              </IonLabel>
+            </IonRow>
+            {eventNow.map((event:any) => 
+            <IonRow className="eventNow">
+              <IonRow>
+                <IonLabel className="label_event"> Cours : </IonLabel>
+                <IonLabel className="label_event_now"> {eventNow[0].summary.value}</IonLabel>
+              </IonRow>
+              <IonRow>
+                <IonLabel className="label_event"> Salle : </IonLabel>
+                <IonLabel className="label_event_now"> {eventNow[0].location.value}</IonLabel>
+              </IonRow>
+              <IonRow>
+                <IonLabel className="label_event"> Horaires : </IonLabel>
+                <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toLocaleString().slice(0,24)}</IonLabel>
+                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString().slice(0,24)} </IonLabel>
+              </IonRow>
+            </IonRow>
+            )}
           </IonGrid> 
         }
 
