@@ -24,7 +24,7 @@ function eventIsInGroupe(o:any)
   {
     return o.summary.value.toString().includes("CM") 
           || o.summary.value.toString().includes("Gr"+localStorage.getItem("gpTP"))
-          //|| o.summary.value.toString().includes("GL"+localStorage.getItem("gpTP")) 
+          || o.summary.value.toString().includes("GL"+localStorage.getItem("gpTP")) 
           || o.summary.value.toString().includes("Gr"+localStorage.getItem("gpTD")) 
           || (""+localStorage.getItem("gpOpt") === "Prolog" ? o.summary.value.toString().includes("Programmation logique") : o.summary.value.toString().includes("Archit") ) ;
   } 

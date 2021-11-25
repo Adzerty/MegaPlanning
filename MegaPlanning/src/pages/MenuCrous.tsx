@@ -6,10 +6,14 @@ import { Http, HttpResponse } from '@capacitor-community/http';
 
 const MenuCrous: React.FC = () => {
 
+  let yearNow = new Date(Date.now()).getFullYear();
+  let monthNow = new Date(Date.now()).getMonth() + 1;
+  let dayNow = new Date(Date.now()).getDate();
+  let dateTmp = "" + yearNow + "-" + monthNow + "-" + dayNow;
   const [stringMenu, setMenu] = useState<string>('');
   const [idRestau, setIdRestau] = useState<string>('r166');
   const [strRestau, setStrRestau] = useState<string>('Resto\'U Porte Océane');
-  const [strDate, setStrDate ] = useState<string>('2021-11-24');
+  const [strDate, setStrDate ] = useState<string>(dateTmp);
 
   //IonPicker
   const [present] = useIonPicker();
@@ -40,9 +44,7 @@ function searchForRU(o:any){
 }
 
 function searchForDate(o:any){
-  let yearNow = new Date(Date.now()).getFullYear();
-  let monthNow = new Date(Date.now()).getMonth() + 1;
-  let dayNow = new Date(Date.now()).getDate();
+
   return o.$.date == strDate;
 }
 
@@ -86,7 +88,7 @@ function generateDateOptions(){
     present({
       buttons: [
         {
-          text: 'Confirm',
+          text: 'Valider',
           handler: (selected) => {
             setIdRestau(selected.restau.value)
             setStrRestau(selected.restau.text)
@@ -122,7 +124,7 @@ function generateDateOptions(){
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonButton onClick={presentIonPicker}>Filtre</IonButton>
+        <IonButton onClick={presentIonPicker}>Filtres</IonButton>
           <div className="containerMenu">
             <h5> {strRestau} | {strDate}</h5>
             <div className="menu" dangerouslySetInnerHTML={{ __html: menuToday }}/>
