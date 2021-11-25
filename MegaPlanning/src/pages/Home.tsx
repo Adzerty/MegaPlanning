@@ -23,7 +23,8 @@ function eventIsInGroupe(o:any)
   if(o.summary)
   {
     return o.summary.value.toString().includes("CM") 
-          || o.summary.value.toString().includes("Gr"+localStorage.getItem("gpTP")) 
+          || o.summary.value.toString().includes("Gr"+localStorage.getItem("gpTP"))
+          //|| o.summary.value.toString().includes("GL"+localStorage.getItem("gpTP")) 
           || o.summary.value.toString().includes("Gr"+localStorage.getItem("gpTD")) 
           || (""+localStorage.getItem("gpOpt") === "Prolog" ? o.summary.value.toString().includes("Programmation logique") : o.summary.value.toString().includes("Archit") ) ;
   } 
@@ -71,6 +72,7 @@ const Home: React.FC = () => {
   
   let parsedCal = ical.parseString(stringTmpCal);
   let eventNow = parsedCal.events.sort(sortByDtstart).filter(eventIsNow).filter(eventIsInGroupe);
+  console.log(eventNow);
   let eventsAfter = parsedCal.events.sort(sortByDtstart).filter(eventIsLater).filter(eventIsInGroupe).slice(0,10);
   //console.log(parsedCal.calendarData);
   console.log("EVENT NOW");
@@ -198,8 +200,8 @@ const Home: React.FC = () => {
               </IonRow>
               <IonRow>
                 <IonLabel className="label_event"> Horaires : </IonLabel>
-                <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toString().slice(0,24)}</IonLabel>
-                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toString().slice(0,24)} </IonLabel>
+                <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toLocaleString().slice(0,24)}</IonLabel>
+                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString().slice(0,24)} </IonLabel>
               </IonRow>
             </IonRow>
           </IonGrid> 
@@ -224,8 +226,8 @@ const Home: React.FC = () => {
                   </IonRow>
                   <IonRow>
                     <IonLabel className="label_event"> Horaires : </IonLabel>
-                    <IonLabel className="label_event_now"> De : {event.dtstart.value.toString().slice(0,24)}</IonLabel>
-                    <IonLabel className="label_event_now"> A : {event.dtend.value.toString().slice(0,24)} </IonLabel>
+                    <IonLabel className="label_event_now"> De : {event.dtstart.value.toLocaleString().slice(0,24)}</IonLabel>
+                    <IonLabel className="label_event_now"> A : {event.dtend.value.toLocaleString().slice(0,24)} </IonLabel>
                   </IonRow>
                 </IonRow>
               )}
