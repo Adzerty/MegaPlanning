@@ -1,7 +1,8 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
+import { reload } from 'ionicons/icons';
 
 
 function sortByDtstart(o:any, o2:any){
@@ -27,6 +28,7 @@ function eventIsInGroupe(o:any)
           || o.summary.value.toString().includes("Gr"+localStorage.getItem("gpTP"))
           || o.summary.value.toString().includes("GL"+localStorage.getItem("gpTP")) 
           || o.summary.value.toString().includes("Gr"+localStorage.getItem("gpTD")) 
+          || o.summary.value.toString().includes("EX") 
           || (""+localStorage.getItem("gpOpt") === "Prolog" ? o.summary.value.toString().includes("Programmation logique") : o.summary.value.toString().includes("Archit") ) ;
   } 
   else
@@ -96,6 +98,9 @@ const Home: React.FC = () => {
         <IonToolbar>
           <IonButtons slot="start">
             <IonMenuButton/>
+            <IonButton onClick={()=>{window.location.reload()}}>
+              <IonIcon icon={reload}></IonIcon>
+            </IonButton>
           </IonButtons>
           <IonTitle>MegaPlanning</IonTitle>
         </IonToolbar>

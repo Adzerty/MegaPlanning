@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonButton, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -24,6 +24,7 @@ import './theme/variables.css';
 import React from 'react';
 import Menu from './components/Menu';
 import MenuCrous from './pages/MenuCrous';
+import Horaires from './pages/Horaires';
 
 const App: React.FC = () => (
   <IonApp>
@@ -41,6 +42,10 @@ const App: React.FC = () => (
 
         <Route exact path="/home">
           <Home />
+        </Route>
+
+        <Route exact path="/horaires">
+          <Horaires />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

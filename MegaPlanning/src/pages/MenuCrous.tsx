@@ -1,7 +1,8 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar, useIonPicker } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar, useIonPicker } from '@ionic/react';
 import './MenuCrous.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
+import { reload } from 'ionicons/icons';
 
 
 const MenuCrous: React.FC = () => {
@@ -119,7 +120,11 @@ function generateDateOptions(){
         <IonToolbar>
           <IonButtons slot="start">
             <IonMenuButton/>
+            <IonButton onClick={()=>{window.location.reload()}}>
+              <IonIcon icon={reload}></IonIcon>
+            </IonButton>
           </IonButtons>
+
           <IonTitle>Menu CROUS</IonTitle>
         </IonToolbar>
       </IonHeader>
