@@ -13,7 +13,6 @@ function sortByDtstart(o:any, o2:any){
 
 function eventIsNow(o:any)
 {
-  console.log("AAHAHAHA" + o.dtstart)
   let dateNow = Date.now();
   let dateStart = Date.parse(o.dtstart.value.toString());
   let dateEnd = Date.parse(o.dtend.value.toString());
@@ -183,7 +182,6 @@ const Home: React.FC = () => {
                   window.location.reload();
                 }
               }}>Charger le calendrier</IonButton>
-              <IonButton className="secondary">Tutoriel</IonButton>
             </IonRow>
           </IonGrid> 
         }

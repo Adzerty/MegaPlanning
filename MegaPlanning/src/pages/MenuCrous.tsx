@@ -8,8 +8,10 @@ import { reload } from 'ionicons/icons';
 const MenuCrous: React.FC = () => {
 
   let yearNow = new Date(Date.now()).getFullYear();
-  let monthNow = new Date(Date.now()).getMonth() + 1;
-  let dayNow = new Date(Date.now()).getDate();
+  let monthNow = "" + new Date(Date.now()).getMonth() + 1;
+  if(monthNow.length != 2) monthNow = '0'+monthNow;
+  let dayNow = "" + new Date(Date.now()).getDate();
+  if(dayNow.length != 2) dayNow = '0'+dayNow;
   let dateTmp = "" + yearNow + "-" + monthNow + "-" + dayNow;
   const [stringMenu, setMenu] = useState<string>('');
   const [idRestau, setIdRestau] = useState<string>('r166');
@@ -58,8 +60,10 @@ function generateDateOptions(){
       let currentDate = new Date();
       currentDate.setDate(currentDate.getDate() + 1*nbIter);
       let year = new Date(currentDate).getFullYear();
-      let month = new Date(currentDate).getMonth() + 1;
-      let day = new Date(currentDate).getDate();
+      let month = "" + (new Date(currentDate).getMonth() + 1);
+      if(month.length != 2) month = '0'+month;
+      let day = "" + new Date(currentDate).getDate();
+      if(day.length != 2) day = '0'+day;
       let strDateTmp = "" + year + "-" + month + "-" + day;
       let textDateOption = nbIter == 0 ? "Aujourd'hui" : nbIter == 1 ? "Demain" : nbIter == 2 ? "Après-demain" : currentDate.toLocaleDateString();
       arrayReturn.push({"text":textDateOption, "value":strDateTmp});
