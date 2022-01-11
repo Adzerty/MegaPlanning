@@ -3,6 +3,7 @@ import './Horaires.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
 import { reload } from 'ionicons/icons';
+import { Link } from 'react-router-dom';
 
 
 const Horaires: React.FC = () => {
@@ -14,57 +15,43 @@ const Horaires: React.FC = () => {
   const[BPF, setBPF] = useState("");
   const[BLP, setBLP] = useState("");
 
-  // Send a POST request
-  axios.post(
-    'https://www.transports-lia.fr/fr/NextDeparture/PhysicalStop', 
-    'destinations=%5B%7B%22JourneyIds%22%3A%5B17115%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Grand+Hameau%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=419&sens=2', 
-    {
-        headers: { 
-            'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' 
-        }
-    }
-  ).then((res:any)=>{
-    setAGH(res.data);
-  })
+  useEffect(()=>{
+    doPost('alp');
+    doPost('agh');
+    doPost('blp');
+    doPost('bpf');
+  },[])
 
-  // Send a POST request
-  axios.post(
-    'https://www.transports-lia.fr/fr/NextDeparture/PhysicalStop', 
-    'destinations=%5B%7B%22JourneyIds%22%3A%5B17114%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=419&sens=1',
-    {
-        headers: { 
-            'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' 
-        }
-    }
-  ).then((res:any)=>{
-    setALP(res.data);
-  })
+  // Example of a GET request
+  const doPost = async (arret:string) => {
 
-   // Send a POST request
-   axios.post(
-    'https://www.transports-lia.fr/fr/NextDeparture/PhysicalStop', 
-    'destinations=%5B%7B%22JourneyIds%22%3A%5B17119%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Pr%C3%A9+Fleuri%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=425&sens=2',
-    {
-        headers: { 
-            'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' 
-        }
-    }
-  ).then((res:any)=>{
-    setBPF(res.data);
-  })
+    let link = "https://www.transports-lia.fr/fr/NextDeparture/PhysicalStop";
+    let payload = "";
 
-   // Send a POST request
-   axios.post(
-    'https://www.transports-lia.fr/fr/NextDeparture/PhysicalStop', 
-    'destinations=%5B%7B%22JourneyIds%22%3A%5B17118%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=425&sens=1',
-    {
-        headers: { 
-            'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' 
-        }
+    switch(arret){
+      case "agh": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17114%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=419&sens=1";
+                  break;
+      case "alp": payload = 'destinations=%5B%7B%22JourneyIds%22%3A%5B17115%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Grand+Hameau%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=419&sens=2'
+                  break;
+      case "bpf": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17118%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=425&sens=1"; 
+                  break;
+      case "blp": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17119%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Pr%C3%A9+Fleuri%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=425&sens=2"; 
+                  break;
     }
-  ).then((res:any)=>{
-    setBLP(res.data);
-  })
+    const options = {
+      url: link,
+      data: new Object(payload),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+    };
+
+    const response: HttpResponse = await Http.post(options);
+    switch(arret){
+      case "agh": setAGH(response.data); break;
+      case "alp": setALP(response.data); break;
+      case "bpf": setBPF(response.data); break;
+      case "blp": setBLP(response.data); break;
+    }
+  };
 
   return (
     <IonPage>
@@ -76,7 +63,7 @@ const Horaires: React.FC = () => {
               <IonIcon icon={reload}></IonIcon>
             </IonButton>
           </IonButtons>
-          <IonTitle>Horaires</IonTitle>
+          <IonTitle>Horaires à l'arrêt Université</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
