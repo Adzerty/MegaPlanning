@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "MegaPlanning",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
