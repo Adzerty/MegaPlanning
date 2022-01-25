@@ -25,6 +25,7 @@
     "@types/react-router-dom": "^5.1.7",
     "axios": "^0.24.0",
     "cal-parser": "^1.0.1",
+    "dotenv": "^14.3.0",
     "graceful-fs": "^4.2.8",
     "ionicons": "^5.4.0",
     "package.json": "^2.0.1",
