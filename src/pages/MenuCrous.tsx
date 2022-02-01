@@ -9,13 +9,17 @@ const MenuCrous: React.FC = () => {
 
   let yearNow = new Date(Date.now()).getFullYear();
   
-  let monthNow = "" + new Date(Date.now()).getMonth() + 1;
+  let monthNow = ""+ (new Date(Date.now()).getMonth() + 1);
   if(monthNow.length != 2) monthNow = '0'+monthNow;
+  
 
-  let dayNow = "" + new Date(Date.now()).getDate();
+  let dayNow = "" + (new Date(Date.now()).getDate());
   if(dayNow.length != 2) dayNow = '0'+dayNow;
 
   let dateTmp = "" + yearNow + "-" + monthNow + "-" + dayNow;
+
+  console.log(dateTmp);
+  
   const [stringMenu, setMenu] = useState<string>('');
   const [idRestau, setIdRestau] = useState<string>('r166');
   const [strRestau, setStrRestau] = useState<string>('Resto\'U Porte Océane');
