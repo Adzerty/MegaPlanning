@@ -206,8 +206,8 @@ const Home: React.FC = () => {
               </IonRow>
               <IonRow>
                 <IonLabel className="label_event"> Horaires : </IonLabel>
-                <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toLocaleString().slice(0,24)}</IonLabel>
-                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString().slice(0,24)} </IonLabel>
+                <IonLabel className="label_event_now"> De :{eventNow[0].dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtstart.value.toLocaleString()}</IonLabel>
+                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtend.value.toLocaleString()} </IonLabel>
               </IonRow>
             </IonRow>
           </IonGrid> 
@@ -234,8 +234,8 @@ const Home: React.FC = () => {
               </IonRow>
               <IonRow>
                 <IonLabel className="label_event"> Horaires : </IonLabel>
-                <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toLocaleString().slice(0,24)}</IonLabel>
-                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString().slice(0,24)} </IonLabel>
+                <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtstart.value.toLocaleString()}</IonLabel>
+                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtend.value.toLocaleString()} </IonLabel>
               </IonRow>
             </IonRow>
             )}
@@ -261,8 +261,8 @@ const Home: React.FC = () => {
                   </IonRow>
                   <IonRow>
                     <IonLabel className="label_event"> Horaires : </IonLabel>
-                    <IonLabel className="label_event_now"> De : {event.dtstart.value.toLocaleString().slice(0,24)}</IonLabel>
-                    <IonLabel className="label_event_now"> A : {event.dtend.value.toLocaleString().slice(0,24)} </IonLabel>
+                    <IonLabel className="label_event_now"> De : {event.dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtstart.value.toLocaleString()}</IonLabel>
+                    <IonLabel className="label_event_now"> A : {event.dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtend.value.toLocaleString()} </IonLabel>
                   </IonRow>
                 </IonRow>
               )}
