@@ -13,6 +13,7 @@
 - Hyperplanning (accès au calendrier de la L3 INFO)
 - Menu des restaurants CROUS
 - Horaires de l'arrêt Université du tramway Lia
+- Listes des devoirs
 
 # HOWTO
 ## Installation
@@ -23,3 +24,6 @@
 ## Compilation pour les différents OS
 - `ionic capacitor build ios` pour iOS (nécessite Xcode)
 - `ionic capacitor build android` pour Android (nécessite Android Studio)
+
+## Utilisation de l'application sur navigateur 
+- http://l3info.adzerty.fr
