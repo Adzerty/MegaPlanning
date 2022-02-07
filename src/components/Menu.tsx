@@ -16,7 +16,7 @@
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { attach, attachOutline, bug, bugOutline, close, closeOutline, home, homeOutline, paperPlane, paperPlaneOutline, pizza, pizzaOutline, save, saveOutline, time, timeOutline } from 'ionicons/icons';
+import { attach, attachOutline, book, bookOutline, bug, bugOutline, close, closeOutline, home, homeOutline, paperPlane, paperPlaneOutline, pizza, pizzaOutline, save, saveOutline, time, timeOutline } from 'ionicons/icons';
 import './Menu.css';
 
 /**
@@ -47,6 +47,12 @@ const appPages: AppPage[] = [
     url: '/horaires',
     iosIcon: timeOutline,
     mdIcon: time,
+  },
+  {
+    title: 'Devoirs',
+    url: '/devoirs',
+    iosIcon: bookOutline,
+    mdIcon: book,
   }
 ];
 

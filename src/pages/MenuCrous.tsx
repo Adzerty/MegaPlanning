@@ -28,7 +28,7 @@ const MenuCrous: React.FC = () => {
   //IonPicker
   const [present] = useIonPicker();
 
-  let link = "http://webservices-v2.crous-mobile.fr/feed/normandie/externe/menu.xml";
+  let link = "http://api.adzerty.fr/menu/";
   
   useEffect(()=>{
       

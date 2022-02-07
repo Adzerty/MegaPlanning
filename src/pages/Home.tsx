@@ -50,7 +50,7 @@ const Home: React.FC = () => {
 
   const ical = require('cal-parser');
   const [stringTmpCal, setCal] = useState<string>('');
-  let link = "https://hplanning.univ-lehavre.fr/Telechargements/ical/Edt_ST_L3___INFORMATIQUE.ics?version=2018.0.3.6&idICal=AA3AF4DB9A4DFF66928DD079A80BF99B&param=643d5b312e2e36325d2666683d3126663d3131313030";
+  let link = "http://api.adzerty.fr/calendar/";
   
 
   useEffect(()=>{
@@ -63,7 +63,6 @@ const Home: React.FC = () => {
         };
 
         const response: HttpResponse = await Http.get(options);
-
         setCal(response.data);
 
       };

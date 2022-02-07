@@ -29,13 +29,13 @@ const Horaires: React.FC = () => {
     let payload = "";
 
     switch(arret){
-      case "agh": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17114%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=419&sens=1";
+      case "alp": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17114%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=419&sens=1";
                   break;
-      case "alp": payload = 'destinations=%5B%7B%22JourneyIds%22%3A%5B17115%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Grand+Hameau%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=419&sens=2'
+      case "agh": payload = 'destinations=%5B%7B%22JourneyIds%22%3A%5B17115%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Grand+Hameau%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=419&sens=2'
                   break;
-      case "bpf": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17118%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=425&sens=1"; 
+      case "blp": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17118%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22La+Plage%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=4000&lineId=425&sens=1"; 
                   break;
-      case "blp": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17119%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Pr%C3%A9+Fleuri%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=425&sens=2"; 
+      case "bpf": payload = "destinations=%5B%7B%22JourneyIds%22%3A%5B17119%5D%2C%22CssClass%22%3A%22colorDest_0%22%2C%22Name%22%3A%22Pr%C3%A9+Fleuri%22%2C%22Hide%22%3Afalse%7D%5D&physicalId=3999&lineId=425&sens=2"; 
                   break;
     }
     const options = {

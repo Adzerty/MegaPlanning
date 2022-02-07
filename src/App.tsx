@@ -25,6 +25,7 @@ import React from 'react';
 import Menu from './components/Menu';
 import MenuCrous from './pages/MenuCrous';
 import Horaires from './pages/Horaires';
+import Devoirs from './pages/Devoirs';
 
 const App: React.FC = () => (
   <IonApp>
@@ -46,6 +47,10 @@ const App: React.FC = () => (
 
         <Route exact path="/horaires">
           <Horaires />
+        </Route>
+
+        <Route exact path="/devoirs">
+          <Devoirs />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
