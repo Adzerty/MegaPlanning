@@ -1,9 +1,10 @@
-import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRefresher, IonRefresherContent, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
 import { reload } from 'ionicons/icons';
 import { Header } from '../components/Header';
+import { RefresherEventDetail } from '@ionic/core';
 
 
 function sortByDtstart(o: any, o2: any) {
@@ -13,11 +14,21 @@ function sortByDtstart(o: any, o2: any) {
 }
 
 
+
 const Devoirs: React.FC = () => {
   const [stringDevoirs, setDevoirs] = useState<string>('');
+  const [events, setEvents]         = useState<string[]>([]);
   let link = "http://api.adzerty.fr/devoirs/";
-
-
+  let reload = false;
+  
+  function doRefresh(event: CustomEvent<RefresherEventDetail>) {
+    reload = !reload;
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.detail.complete();
+    }, 2000);
+  }
+  
   useEffect(() => {
 
     // Example of a GET request
@@ -31,24 +42,24 @@ const Devoirs: React.FC = () => {
       setDevoirs(response.data);
 
     };
-
     doGet();
-  }, []);
+    setEvents(stringDevoirs.);
+  }, [reload]);
 
 
   //let parsedDevoirs = JSON.parse(stringDevoirs);
-  let events = new Array();
-  for(let i = 0; i<stringDevoirs.length; i++){
-    events.push(stringDevoirs[i]);
-  }
+
 
   return (
     <IonPage>
       <Header>
         Dates de rendus
       </Header>
+      
       <IonContent fullscreen>
-
+        <IonRefresher slot="fixed" onIonRefresh={doRefresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
         <IonCard color='primary'>
           <IonCardHeader>
             <IonCardTitle>
