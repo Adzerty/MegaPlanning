@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
 import { reload } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
+import { Header } from '../components/Header';
 
 
 const Horaires: React.FC = () => {
@@ -55,17 +56,9 @@ const Horaires: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton/>
-            <IonButton onClick={()=>{window.location.reload()}}>
-              <IonIcon icon={reload}></IonIcon>
-            </IonButton>
-          </IonButtons>
-          <IonTitle>Horaires à l'arrêt Université</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header>
+        Horaires à l'arrêt Université
+      </Header>
       <IonContent fullscreen>
           <div className="containerMenu">
             <h5> Tram A | vers Grand Hameau </h5>

@@ -1,8 +1,9 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
 import { reload } from 'ionicons/icons';
+import { Header } from '../components/Header';
 
 
 function sortByDtstart(o:any, o2:any){
@@ -92,19 +93,11 @@ const Home: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton/>
-            <IonButton onClick={()=>{window.location.reload()}}>
-              <IonIcon icon={reload}></IonIcon>
-            </IonButton>
-          </IonButtons>
-          <IonTitle>MegaPlanning</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+    <Header>
+      Dates de rendus
+    </Header>
       <IonContent fullscreen>
-
+      <IonCard color='primary'>
         {localStorage.getItem("gpTP") === null &&
           <IonGrid className="container">
 
@@ -243,34 +236,35 @@ const Home: React.FC = () => {
 
 
           {localStorage.getItem("gpTP") !== null &&  eventsAfter.length !== 0 && 
-          <IonGrid className="eventLaterContainer">
-            <IonRow>
-              <IonLabel>Prochains cours</IonLabel>
-            </IonRow>
-            
-              {eventsAfter.map((event:any) => 
-              <IonRow className="eventLater">
-                  <IonRow>
-                    <IonLabel className="label_event"> Cours : </IonLabel>
-                    <IonLabel className="label_event_now"> {event.summary.value}</IonLabel>
-                  </IonRow>
-                  <IonRow>
-                    <IonLabel className="label_event"> Salle : </IonLabel>
-                    <IonLabel className="label_event_now"> {event.location.value}</IonLabel>
-                  </IonRow>
-                  <IonRow>
-                    <IonLabel className="label_event"> Horaires : </IonLabel>
-                    <IonLabel className="label_event_now"> De : {event.dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtstart.value.toLocaleString()}</IonLabel>
-                    <IonLabel className="label_event_now"> A : {event.dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtend.value.toLocaleString()} </IonLabel>
-                  </IonRow>
-                </IonRow>
-              )}
-              
+          <div>
+            <IonCardHeader>
+              <IonCardTitle>Prochains cours</IonCardTitle>
+            </IonCardHeader>
 
-            
-          </IonGrid> 
-          
+        
+            <IonGrid className="eventLaterContainer">
+                {eventsAfter.map((event:any) => 
+                <IonRow className="eventLater">
+                    <IonRow>
+                      <IonLabel className="label_event"> Cours : </IonLabel>
+                      <IonLabel className="label_event_now"> {event.summary.value}</IonLabel>
+                    </IonRow>
+                    <IonRow>
+                      <IonLabel className="label_event"> Salle : </IonLabel>
+                      <IonLabel className="label_event_now"> {event.location.value}</IonLabel>
+                    </IonRow>
+                    <IonRow>
+                      <IonLabel className="label_event"> Horaires : </IonLabel>
+                      <IonLabel className="label_event_now"> De : {event.dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtstart.value.toLocaleString()}</IonLabel>
+                      <IonLabel className="label_event_now"> A : {event.dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtend.value.toLocaleString()} </IonLabel>
+                    </IonRow>
+                  </IonRow>
+                )}
+            </IonGrid> 
+        
+          </div>
         }
+        </IonCard>
       </IonContent>
     </IonPage>
   );

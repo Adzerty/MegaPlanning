@@ -51,16 +51,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    background-color: #1A936F;
     border-radius: 12px;
-  
     width:fit-content;
-    max-width: 90%;
-  
     text-align: center;
-
-    padding: 5px;
   }
 
   .eventLater{
@@ -112,3 +105,5 @@
   .item-content{
     background-color: #FF865E;
   }
+
+  

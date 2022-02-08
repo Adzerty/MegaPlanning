@@ -1,8 +1,9 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
 import { reload } from 'ionicons/icons';
+import { Header } from '../components/Header';
 
 
 function sortByDtstart(o: any, o2: any) {
@@ -43,20 +44,17 @@ const Devoirs: React.FC = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-            <IonButton onClick={() => { window.location.reload() }}>
-              <IonIcon icon={reload}></IonIcon>
-            </IonButton>
-          </IonButtons>
-          <IonTitle>Dates de rendus</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header>
+        Dates de rendus
+      </Header>
       <IonContent fullscreen>
 
-
+        <IonCard color='primary'>
+          <IonCardHeader>
+            <IonCardTitle>
+              Devoirs
+            </IonCardTitle>
+          </IonCardHeader>
         {events.length !== 0 &&
           <IonGrid className="eventLaterContainer">
 
@@ -86,6 +84,7 @@ const Devoirs: React.FC = () => {
           </IonGrid>
 
         }
+        </IonCard>
       </IonContent>
     </IonPage>
   );
