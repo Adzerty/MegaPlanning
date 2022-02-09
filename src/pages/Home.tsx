@@ -97,10 +97,9 @@ const Home: React.FC = () => {
       Dates de rendus
     </Header>
       <IonContent fullscreen>
-      <IonCard color='primary'>
+
         {localStorage.getItem("gpTP") === null &&
           <IonGrid className="container">
-
             <IonRow>
               <IonLabel>Groupe de TP : </IonLabel>
               <IonRadioGroup value={selectedTP} onIonChange={e => setSelectedTP(e.detail.value)}>
@@ -181,7 +180,7 @@ const Home: React.FC = () => {
         {localStorage.getItem("gpTP") !== null && eventNow.length === 1 &&
 
          
-          <div className="eventNowContainer">
+          <IonCard className="eventNowContainer">
             <IonRow>
               <IonLabel>
                 Cours actuel
@@ -202,36 +201,37 @@ const Home: React.FC = () => {
                 <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtend.value.toLocaleString()} </IonLabel>
               </IonRow>
             </IonRow>
-          </div> 
+          </IonCard> 
         }
 
         {localStorage.getItem("gpTP") !== null && eventNow.length >= 2 &&
-
-                
-          <IonGrid className="eventNowContainer">
-            <IonRow>
-              <IonLabel>
-                Cours actuel
-              </IonLabel>
-            </IonRow>
-            {eventNow.map((event:any) => 
-            <IonRow className="eventNow">
+          
+          <IonCard color='secondary'>      
+            <IonGrid className="eventNowContainer">
               <IonRow>
-                <IonLabel className="label_event"> Cours : </IonLabel>
-                <IonLabel className="label_event_now"> {eventNow[0].summary.value}</IonLabel>
+                <IonLabel>
+                  Cours actuel
+                </IonLabel>
               </IonRow>
-              <IonRow>
-                <IonLabel className="label_event"> Salle : </IonLabel>
-                <IonLabel className="label_event_now"> {eventNow[0].location.value}</IonLabel>
+              {eventNow.map((event:any) => 
+              <IonRow className="eventNow">
+                <IonRow>
+                  <IonLabel className="label_event"> Cours : </IonLabel>
+                  <IonLabel className="label_event_now"> {eventNow[0].summary.value}</IonLabel>
+                </IonRow>
+                <IonRow>
+                  <IonLabel className="label_event"> Salle : </IonLabel>
+                  <IonLabel className="label_event_now"> {eventNow[0].location.value}</IonLabel>
+                </IonRow>
+                <IonRow>
+                  <IonLabel className="label_event"> Horaires : </IonLabel>
+                  <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtstart.value.toLocaleString()}</IonLabel>
+                  <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtend.value.toLocaleString()} </IonLabel>
+                </IonRow>
               </IonRow>
-              <IonRow>
-                <IonLabel className="label_event"> Horaires : </IonLabel>
-                <IonLabel className="label_event_now"> De : {eventNow[0].dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtstart.value.toLocaleString()}</IonLabel>
-                <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtend.value.toLocaleString()} </IonLabel>
-              </IonRow>
-            </IonRow>
-            )}
-          </IonGrid> 
+              )}
+            </IonGrid> 
+          </IonCard>
         }
 
 
@@ -276,7 +276,6 @@ const Home: React.FC = () => {
         
           </div>
         }
-        </IonCard>
       </IonContent>
     </IonPage>
   );

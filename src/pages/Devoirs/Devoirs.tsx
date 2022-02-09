@@ -9,14 +9,14 @@ import { getDevoir } from '../../api/api-service';
 import { AppRefresher } from '../../components/AppRefresher';
 import { DevoirGrid } from './DevoirGrid';
 
-export interface DevoirList {
+export interface Devoir {
   title : string,
   date  : string,
   tags  : string[]
 }
 
 const Devoirs: React.FC = () => {
-  const [devoirs, setDevoirs] = useState<DevoirList[]>([]);
+  const [devoirs, setDevoirs] = useState<Devoir[]>([]);
   const [isLoading, setLoading] = useState(true);
 
   function handleRefresh(event: CustomEvent<RefresherEventDetail>) {
