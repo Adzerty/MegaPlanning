@@ -28,7 +28,7 @@
 import { Redirect, Route, useLocation } from 'react-router-dom';
 import { attach, attachOutline, book, bookOutline, bug, bugOutline, calendar, close, closeOutline, home, homeOutline, informationCircle, map, paperPlane, paperPlaneOutline, personCircle, pizza, pizzaOutline, reload, save, saveOutline, time, timeOutline } from 'ionicons/icons';
 import './Menu.css';
-import Devoirs from '../pages/Devoirs';
+import Devoirs from '../pages/Devoirs/Devoirs';
 import Home from '../pages/Home';
 import Horaires from '../pages/Horaires';
 import MenuCrous from '../pages/MenuCrous';

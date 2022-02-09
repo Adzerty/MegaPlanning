@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import './Home.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
@@ -181,7 +181,7 @@ const Home: React.FC = () => {
         {localStorage.getItem("gpTP") !== null && eventNow.length === 1 &&
 
          
-          <IonGrid className="eventNowContainer">
+          <div className="eventNowContainer">
             <IonRow>
               <IonLabel>
                 Cours actuel
@@ -202,7 +202,7 @@ const Home: React.FC = () => {
                 <IonLabel className="label_event_now"> A : {eventNow[0].dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {eventNow[0].dtend.value.toLocaleString()} </IonLabel>
               </IonRow>
             </IonRow>
-          </IonGrid> 
+          </div> 
         }
 
         {localStorage.getItem("gpTP") !== null && eventNow.length >= 2 &&
@@ -242,25 +242,37 @@ const Home: React.FC = () => {
             </IonCardHeader>
 
         
-            <IonGrid className="eventLaterContainer">
+            <div className="eventLaterContainer">
                 {eventsAfter.map((event:any) => 
-                <IonRow className="eventLater">
+                <IonGrid className="eventLater">
                     <IonRow>
-                      <IonLabel className="label_event"> Cours : </IonLabel>
-                      <IonLabel className="label_event_now"> {event.summary.value}</IonLabel>
+                      <IonCol>
+                        <IonLabel className="label_event"> Cours : </IonLabel>
+                      </IonCol>
+                      <IonCol>
+                        <IonLabel className="label_event_now"> {event.summary.value}</IonLabel>
+                      </IonCol>
                     </IonRow>
                     <IonRow>
-                      <IonLabel className="label_event"> Salle : </IonLabel>
-                      <IonLabel className="label_event_now"> {event.location.value}</IonLabel>
+                      <IonCol>
+                        <IonLabel className="label_event"> Salle : </IonLabel>
+                      </IonCol>
+                      <IonCol>
+                        <IonLabel className="label_event_now"> {event.location.value}</IonLabel>
+                      </IonCol>
                     </IonRow>
                     <IonRow>
-                      <IonLabel className="label_event"> Horaires : </IonLabel>
-                      <IonLabel className="label_event_now"> De : {event.dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtstart.value.toLocaleString()}</IonLabel>
-                      <IonLabel className="label_event_now"> A : {event.dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtend.value.toLocaleString()} </IonLabel>
+                      <IonCol>
+                        <IonLabel className="label_event"> Horaires : </IonLabel>
+                      </IonCol>
+                      <IonCol>
+                        <IonLabel className="label_event_now"> De : {event.dtstart.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtstart.value.toLocaleString()}</IonLabel>
+                        <IonLabel className="label_event_now"> A : {event.dtend.value.toLocaleString("fr-FR", { weekday: 'long' })} {event.dtend.value.toLocaleString()} </IonLabel>
+                      </IonCol>
                     </IonRow>
-                  </IonRow>
+                  </IonGrid>
                 )}
-            </IonGrid> 
+            </div> 
         
           </div>
         }
