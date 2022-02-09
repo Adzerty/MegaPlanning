@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonButton, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonButton, IonPage, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -19,40 +19,17 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
+
 /* Theme variables */
 import './theme/variables.css';
 import React from 'react';
 import Menu from './components/Menu';
-import MenuCrous from './pages/MenuCrous';
-import Horaires from './pages/Horaires';
-import Devoirs from './pages/Devoirs';
+
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <Menu/>
-      <IonRouterOutlet id="mainContent">
-        
-        <Route exact path="/">
-          <Redirect to="/home"/>
-        </Route>
-
-        <Route exact path="/menu">
-          <MenuCrous />
-        </Route>
-
-        <Route exact path="/home">
-          <Home />
-        </Route>
-
-        <Route exact path="/horaires">
-          <Horaires />
-        </Route>
-
-        <Route exact path="/devoirs">
-          <Devoirs />
-        </Route>
-      </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
 );

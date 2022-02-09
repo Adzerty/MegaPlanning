@@ -1,0 +1,49 @@
+ .eventNow {  
+    display: flex;
+    flex-direction: column;
+    background-color: #114B5F;
+    border-radius: 12px;
+    margin: 5px;
+    padding: 5px;
+    width:fit-content;
+  }
+
+  .eventNowContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF865E;
+    border-radius: 12px;
+    width:fit-content;
+    max-width: 90%;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+  }
+
+  .eventLaterContainer {
+	margin: auto;
+    padding: 5px;
+	max-width: 500px;
+  }
+
+  .eventLater{
+    background-color: #114B5F;
+    border-radius: 12px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .label_event{
+    font-size: 16px;
+    font-weight: 1000;
+    color: black;
+  }
+
+  .label_event_now{
+    font-size: 16px;
+    font-weight: 1000;
+    color: #F3E9D2;
+  }

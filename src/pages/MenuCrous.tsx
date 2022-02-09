@@ -1,8 +1,9 @@
-import { IonButton, IonButtons, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar, useIonPicker } from '@ionic/react';
+import { IonButton, IonButtons, IonCard, IonContent, IonGrid, IonHeader, IonIcon, IonInput, IonItem, IonLabel, IonMenuButton, IonNote, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToolbar, useIonPicker } from '@ionic/react';
 import './MenuCrous.css';
 import React, { useEffect, useState } from 'react';
 import { Http, HttpResponse } from '@capacitor-community/http';
 import { reload } from 'ionicons/icons';
+import { Header } from '../components/Header';
 
 
 const MenuCrous: React.FC = () => {
@@ -127,24 +128,17 @@ function generateDateOptions(){
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton/>
-            <IonButton onClick={()=>{window.location.reload()}}>
-              <IonIcon icon={reload}></IonIcon>
-            </IonButton>
-          </IonButtons>
-
-          <IonTitle>Menu CROUS</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header>
+        Menu CROUS
+      </Header>
       <IonContent fullscreen>
         <IonButton onClick={presentIonPicker}>Filtres</IonButton>
-          <div className="containerMenu">
-            <h5> {strRestau} | {strDate}</h5>
-            <div className="menu" dangerouslySetInnerHTML={{ __html: menuToday }}/>
-          </div>
+          <IonCard color='secondary'>
+            <div className="containerMenu">
+              <h5> {strRestau} | {strDate}</h5>
+              <div className="menu" dangerouslySetInnerHTML={{ __html: menuToday }}/>
+            </div>
+          </IonCard>
         
       </IonContent>
     </IonPage>
